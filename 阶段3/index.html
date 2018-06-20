@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="content"></div>
+
+    <script type="text/javascript">
+    var socket = new WebSocket("ws://127.0.0.1:8002");
+     socket.onmessage = function (event) {
+        /* 服务器端向客户端发送数据时，自动执行 */
+        var response = event.data;
+        var newTag = document.createElement('div');
+        newTag.innerHTML = response;
+        document.getElementById('content').appendChild(newTag);
+    };
+     // socket.onopen = function () {
+        /* 与服务器端连接成功后，自动执行 */
+    //}
+    //socket.onclose = function (event) {
+        /* 服务器端主动断开连接时，自动执行 */
+    //}
+
+    console.log(socket)
+</script>
+</body>
+</html>
